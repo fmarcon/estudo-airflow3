@@ -1,3 +1,3 @@
-servico=airflow_$1 
+servico=airflow-$1 
 echo Container $servico:
-docker exec -it -u airflow $servico /bin/bash
+docker compose exec -it -u airflow $servico /bin/bash
