@@ -39,6 +39,7 @@ async def create_and_wait(client):
         "GET",
         f"{AIRFLOW_API_BASE}/dags/{DAG_ID}/dagRuns/{run_id}/wait?interval=5",
         headers=headers, data=data,
+        stream=True,
     ) as r:
         async for line in r.aiter_lines():
             pass  # You can do progress report here instead.
