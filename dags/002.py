@@ -15,4 +15,7 @@ with DAG(
         """DAG de estudo 001."""
         return list(range(1, 6))
 
-    paginas = dag001()
+    #paginas = dag001()
+
+if __name__ == "__main__":
+    dag.test()
