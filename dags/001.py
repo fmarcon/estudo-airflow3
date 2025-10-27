@@ -1,6 +1,7 @@
 # dag_exemplo_3_1.py
-from airflow.sdk import dag, task
 import pendulum
+from airflow.sdk import dag, task
+
 
 @dag(
     dag_id="dag_001",

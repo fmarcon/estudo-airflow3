@@ -1,6 +1,7 @@
 
-from airflow.sdk import dag, task
 import pendulum
+from airflow.sdk import dag, task
+
 
 @dag(
     dag_id="dag_004",
@@ -19,6 +20,6 @@ def dag_004():
         """Integra uma pessoa com base no cadastro fornecido."""
         cadastro = context['params'].get('cadastro', None)
         return {"nome": "Maria", "idade": 30, "cadastro": cadastro}
-    dados_integrados = integrar_pessoa()
+    integrar_pessoa()
 
 dag_004()

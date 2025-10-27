@@ -1,7 +1,7 @@
-import requests
-from datetime import datetime, UTC
 import time
+from datetime import UTC, datetime
 
+import requests
 
 BASE_URL = "http://localhost:8080"
 URL_API = "/api/v2"

@@ -1,9 +1,9 @@
 import asyncio
 import json
-import requests
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 
 import httpx
+import requests
 
 TOKEN_URL = "http://localhost:8080/auth/token"
 AIRFLOW_API_BASE = "http://localhost:8080/api/v2"
