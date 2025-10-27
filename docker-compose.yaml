@@ -101,6 +101,8 @@ services:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     <<: *airflow-rede  
@@ -291,7 +293,7 @@ services:
         ls -la /opt/airflow/{logs,dags,plugins,config}
         echo
         echo "Change ownership of files in /opt/airflow to ${AIRFLOW_UID}:0"
-        echo
+        echoselect * from dag_run
         chown -R "${AIRFLOW_UID}:0" /opt/airflow/
         echo
         echo "Change ownership of files in shared volumes to ${AIRFLOW_UID}:0"
