@@ -72,12 +72,17 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
+   
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+
+  # DagBundleGit
+  AIRFLOW_CONN_MY_GIT_CONN: ${AIRFLOW_CONN_MY_GIT_CONN}
+  AIRFLOW__DAG_PROCESSOR__DAG_BUNDLE_CONFIG_LIST: ${AIRFLOW__DAG_PROCESSOR__DAG_BUNDLE_CONFIG_LIST}
+
   user: "${AIRFLOW_UID:-50000}:0"
   networks:
       - rede_airflow
