@@ -1,6 +1,7 @@
-import requests
 import json
-from datetime import datetime, UTC
+from datetime import UTC, datetime
+
+import requests
 
 TOKEN_URL = "http://localhost:8080/auth/token"
 BASE_URL = "http://localhost:8080/api/v2"

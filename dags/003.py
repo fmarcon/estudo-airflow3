@@ -1,10 +1,10 @@
-from datetime import datetime
-from airflow.sdk import dag, task
-import random
-import time
-import pandas as pd
-from pathlib import Path
 import os
+import time
+from datetime import datetime
+from pathlib import Path
+
+import pandas as pd
+from airflow.sdk import dag, task
 
 # ---------------------------------------------------------------------------
 # Constantes e Configurações
@@ -57,7 +57,7 @@ def simular_insercao_ldap_dag_parquet():
         Retorna o caminho do diretório onde os lotes foram salvos.
         """
         # Cria um subdiretório único para esta execução para evitar conflitos.
-        run_dir = DATA_DIR / f"run_{{{{ ts_nodash }}}}"
+        run_dir = DATA_DIR / "run_{{ ts_nodash }}"
         run_dir.mkdir(parents=True, exist_ok=True)
         
         print(f"Gerando {TOTAL_DE_PESSOAS} registros em lotes de {LOTE_TAMANHO}...")
