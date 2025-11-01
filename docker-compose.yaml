@@ -73,8 +73,11 @@ x-airflow-common:
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
 
-    # DagBundleGit
+    # Refresh das dags
     AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL: '10'
+    AIRFLOW__DAG_PROCESSOR__MIN_FILE_PROCESS_INTERVAL: '10'
+
+    # DagBundleGit
     AIRFLOW_CONN_MY_GIT_CONN: ${AIRFLOW_CONN_MY_GIT_CONN}
     AIRFLOW__DAG_PROCESSOR__DAG_BUNDLE_CONFIG_LIST: ${AIRFLOW__DAG_PROCESSOR__DAG_BUNDLE_CONFIG_LIST}
    
