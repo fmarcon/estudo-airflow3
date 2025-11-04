@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from airflow.decorators import dag, task
-from click import confirm
 
 
 @dag(
