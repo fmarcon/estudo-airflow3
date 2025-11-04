@@ -57,7 +57,7 @@ def execucao_dag():
         print("Executando fim.")
     
     # Instancia tasks
-    inicio_task = inicio()
+    inicio = inicio()
     valor = retorna_valor()
     verifica = verifica_valor(valor)
     valor_igual = valor_igual_1()
@@ -65,20 +65,17 @@ def execucao_dag():
     valor_igual_2 = valor_igual_2()
     valor_diferente_de_2 = valor_diferente_de_2()
     executar_outra_escolha = executar_outra_escolha(valor)
-    fim_task = fim()
+    fim= fim()
 
     # Conectar dependências de forma explícita e legível
-    inicio_task >> valor
-    valor >> verifica
+    inicio >> valor >> verifica >> [valor_igual, valor_diferente]
+    
+    # Se valor igual, finaliza
+    valor_igual >> fim
 
-    # Branch 1
-    verifica >> valor_igual
-    verifica >> valor_diferente
+    # Se valor diferente, executa outra verificação
+    valor_diferente >> executar_outra_escolha >> [valor_igual_2, valor_diferente_de_2]
 
-    valor_diferente >> executar_outra_escolha
-    executar_outra_escolha >> [valor_igual_2, valor_diferente_de_2]
-
-    # Todos os caminhos convergem para o fim (fim tem trigger_rule="one_success")
-    [valor_igual, valor_igual_2, valor_diferente_de_2] >> fim_task
+    [ valor_igual_2, valor_diferente_de_2] >> fim
 
 execucao_dag = execucao_dag()
