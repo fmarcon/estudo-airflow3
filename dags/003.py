@@ -86,7 +86,7 @@ def simular_insercao_ldap_dag_parquet():
         print(f"✅ {len(lista_de_arquivos)} lotes encontrados.")
         return lista_de_arquivos
 
-    @task(pool="ldap_pool")
+    @task(pool="limited_pool")
     def processar_lote_parquet_task(caminho_arquivo_lote: str):
         """
         Recebe o caminho para UM arquivo de lote, o lê por inteiro e processa os dados.

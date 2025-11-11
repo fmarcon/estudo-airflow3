@@ -15,13 +15,13 @@ def exemplo_dag_taskflow():
     Esta é uma DAG de exemplo que demonstra o uso da API TaskFlow no Airflow 3.1.
     """
 
-    @task
+    @task(task_display_name="1 - Extrair Dados")
     def extrair_dados():
         """Extrai alguns dados de exemplo."""
         print("Executando a tarefa de extração de dados...")
         return {"nome": "Maria", "idade": 30}
 
-    @task
+    @task(task_display_name="2 - Transformar Dados")
     def transformar_dados(dados_entrada):
         """Transforma os dados extraídos."""
         print(f"Executando a tarefa de transformação com dados: {dados_entrada}")
@@ -29,7 +29,7 @@ def exemplo_dag_taskflow():
         dados_transformados["status"] = "processado"
         return dados_transformados
 
-    @task
+    @task(task_display_name="3 - Carregar Dados")
     def carregar_dados(dados_saida):
         """Carrega os dados transformados."""
         print(f"Executando a tarefa de carregamento com dados: {dados_saida}")
