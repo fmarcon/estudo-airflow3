@@ -5,11 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "apache-airflow==3.1.1",
+    "apache-airflow==3.1.2",
     "httpx>=0.28.1",
     "ipdb>=0.13.13",
     "pandas>=2.3.3",
     "requests>=2.32.5",
+    "ruff>=0.14.4",
 ]
 
 [dependency-groups]
@@ -21,12 +22,13 @@ dev = [
 target-version = "py311"
 line-length = 100
 # Inclui grupos de regras
-select = [
+lint.select = [
     "E",   # erros de estilo
     "F",   # erros de lógica / pyflakes
     "I",   # imports
     "B",   # bugbear (boas práticas)
     #"ANN", # exige type hints
     #"TCH", # checa compatibilidade e consistência de tipos
+    "AIR301", # Airflow, verificar.
 ]
 extend-exclude = ["dags/__pycache__", "plugins/__pycache__"]
